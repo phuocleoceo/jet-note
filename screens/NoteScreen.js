@@ -4,6 +4,7 @@ import { TextInput } from 'react-native-paper';
 import { Button } from 'react-native-paper';
 import useSQLite from "../hooks/useSQLite";
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 export default function NoteScreen({ navigation })
 {
@@ -17,8 +18,9 @@ export default function NoteScreen({ navigation })
 
     const handleAddNote = async () =>
     {
-        const newNote = { title, description };
-        console.log(newNote);
+        const timenow = new Date();
+        const timestamp = moment(timenow).format("llll");
+        const newNote = { title, description, timestamp };
         await Add_Data(newNote);
         await Get_Data();
     };
