@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import useNoteSQLite from "../hooks/useNoteSQLite";
 import { TextInput } from 'react-native-paper';
 import { Button } from 'react-native-paper';
-import useSQLite from "../hooks/useSQLite";
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 
 export default function NoteScreen({ navigation })
 {
-    const { Get_Data, Add_Data } = useSQLite();
+    const { Get_Note, Add_Note } = useNoteSQLite();
     const { listNote } = useSelector(state => state.note);
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
-    useEffect(() => Get_Data(), []);
+    useEffect(() => Get_Note(), []);
 
     const handleAddNote = async () =>
     {
         const timenow = new Date();
         const timestamp = moment(timenow).format("llll");
         const newNote = { title, description, timestamp };
-        await Add_Data(newNote);
-        await Get_Data();
+        await Add_Note(newNote);
+        await Get_Note();
     };
 
     return (
