@@ -13,9 +13,9 @@ export default function Navigation()
 
     useEffect(() => Create_Table(), []);
 
-    // useEffect(() => Drop_Table(), []);
-
     // useEffect(() => Clear_Table(), []);
+
+    // useEffect(() => Drop_Table(), []);
 
     return (
         <NavigationContainer>

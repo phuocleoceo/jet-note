@@ -36,7 +36,13 @@ export default function useSQLite()
         await NoteContext.create(newNote);
     };
 
+    const Delete_Data = async (id) =>
+    {
+        await NoteContext.destroy(id);
+    };
+
     return {
-        Create_Table, Drop_Table, Clear_Table, Get_Data, Add_Data
+        Create_Table, Drop_Table, Clear_Table,
+        Get_Data, Add_Data, Delete_Data
     };
 }

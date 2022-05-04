@@ -23,7 +23,8 @@ export default class NoteContext extends BaseModel
         return {
             id: { type: types.INTEGER, primary_key: true },
             title: { type: types.TEXT, not_null: true },
-            description: { type: types.TEXT, not_null: true }
+            description: { type: types.TEXT, not_null: true },
+            timestamp: { type: types.TEXT, not_null: true }
         }
     }
 }
