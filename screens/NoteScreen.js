@@ -1,9 +1,10 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, FlatList } from 'react-native';
+import { TextInput, Divider } from 'react-native-paper';
 import React, { useEffect, useState } from 'react';
 import useNoteSQLite from "../hooks/useNoteSQLite";
-import { TextInput } from 'react-native-paper';
 import { Button } from 'react-native-paper';
 import { useSelector } from 'react-redux';
+import Note from "../components/Note";
 import moment from 'moment';
 
 export default function NoteScreen({ navigation })
@@ -15,6 +16,15 @@ export default function NoteScreen({ navigation })
     const [description, setDescription] = useState("");
 
     useEffect(() => Get_Note(), []);
+
+    const renderNote = ({ item }) => (
+        <Note
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            timestamp={item.timestamp}
+        />
+    );
 
     const handleAddNote = async () =>
     {
@@ -53,10 +63,18 @@ export default function NoteScreen({ navigation })
                 </Button>
             </View>
 
+            <View style={styles.divider}>
+                <Divider />
+            </View>
+
             <View style={styles.noteList}>
                 {
                     listNote.length > 0 &&
-                    listNote.map(note => <Text key={note.id}>{note.title}</Text>)
+                    <FlatList
+                        data={listNote}
+                        renderItem={renderNote}
+                        keyExtractor={item => item.id}
+                    />
                 }
             </View>
         </View>
@@ -91,5 +109,9 @@ const styles = StyleSheet.create({
     },
     noteList: {
         flex: 2
+    },
+    divider: {
+        width: "90%",
+        alignSelf: "center"
     }
 });
