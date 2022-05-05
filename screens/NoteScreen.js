@@ -32,6 +32,9 @@ export default function NoteScreen({ navigation })
         const timenow = new Date();
         const timestamp = moment(timenow).format("llll");
         const newNote = { title, description, timestamp };
+
+        setTitle("");
+        setDescription("");
         await Add_Note(newNote);
         await Get_Note();
     };
@@ -48,6 +51,7 @@ export default function NoteScreen({ navigation })
                     mode="flat"
                     onChangeText={t => setTitle(t)}
                     style={styles.textInput}
+                    value={title}
                 />
 
                 <TextInput
@@ -55,6 +59,7 @@ export default function NoteScreen({ navigation })
                     mode="flat"
                     onChangeText={d => setDescription(d)}
                     style={styles.textInput}
+                    value={description}
                 />
             </View>
 
