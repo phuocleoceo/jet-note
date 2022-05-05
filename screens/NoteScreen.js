@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, FlatList } from 'react-native';
 import { TextInput, Divider } from 'react-native-paper';
 import React, { useEffect, useState } from 'react';
 import useNoteSQLite from "../hooks/useNoteSQLite";
+import NoteAppBar from "../components/NoteAppBar";
 import { Button } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import Note from "../components/Note";
@@ -37,6 +38,10 @@ export default function NoteScreen({ navigation })
 
     return (
         <View style={styles.container}>
+            <View style={styles.noteAppBar}>
+                <NoteAppBar />
+            </View>
+
             <View style={styles.textField}>
                 <TextInput
                     label="Title"
@@ -61,10 +66,10 @@ export default function NoteScreen({ navigation })
                 >
                     Save
                 </Button>
-            </View>
 
-            <View style={styles.divider}>
-                <Divider />
+                <View style={styles.divider}>
+                    <Divider />
+                </View>
             </View>
 
             <View style={styles.noteList}>
@@ -86,8 +91,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFF',
     },
+
+    noteAppBar: {
+        flex: 1
+    },
     textField: {
-        flex: 1,
+        flex: 2,
         margin: 20,
         marginTop: 0,
         borderColor: "#cfcacf",
@@ -105,10 +114,11 @@ const styles = StyleSheet.create({
     },
     saveButton: {
         width: "20%",
-        borderRadius: 20
+        borderRadius: 20,
+        marginBottom: 10
     },
     noteList: {
-        flex: 2
+        flex: 6
     },
     divider: {
         width: "90%",
