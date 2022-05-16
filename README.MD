@@ -1,9 +1,8 @@
 <br />
 
 <p align="center">
-  <h3 align="center">JET NOTE</h3>
-  
+  <h2 align="center">JET NOTE</h2>
   <p align="center">
-    <img src="/screen-shot.jpg" width=50% alt="Logo">
+    <img src="./screenshot.jpg" width=30% alt="Logo">
   </p>
 </p>
