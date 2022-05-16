@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "rn-ui-challenge",
-    "slug": "rn-ui-challenge",
+    "name": "jet-note",
+    "slug": "jet-note",
     "version": "1.0.0",
     "orientation": "default",
     "icon": "./assets/icon.png",

@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import useNoteSQLite from "./hooks/useNoteSQLite";
 import React, { useEffect } from 'react';
 
-import QuizzScreen from './screens/QuizzScreen';
 import NoteScreen from './screens/NoteScreen';
 
 const Stack = createNativeStackNavigator();
@@ -20,9 +19,8 @@ export default function Navigation()
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Quizz">
+            <Stack.Navigator initialRouteName="Note">
                 <Stack.Screen name="Note" component={NoteScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="Quizz" component={QuizzScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );
